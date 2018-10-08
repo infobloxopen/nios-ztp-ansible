@@ -6,7 +6,7 @@ REQUIRE_PASSWORD="$(less test_output.txt|grep "requires authentication"| cut -d 
 if [ "${REQUIRE_PASSWORD}" == "requires authentication." ] 
 	then 
 
-		echo -e " \033[0;31m Incorrect Password, Please try again \033[0;31m "
+		echo -e " \033[0;31m Incorrect Password entered for admin-openrc file, Please try again \033[0;31m "
 elif
             !  [ "${REQUIRE_PASSWORD}" == "requires authentication" ] 
 	then 
