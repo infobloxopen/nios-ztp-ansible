@@ -1,0 +1,66 @@
+---
+- name: launching vNIOS 
+  hosts: localhost
+  tasks:
+  - name: Deploy Grid-Master
+    os_server:
+       name: Grid_Master
+       state: present
+       image: 637b3a0e-727f-48fc-95b6-23e2736609d6
+       timeout: 200
+       flavor: 92aff88f-839f-479b-9156-4be2a3c3594b 
+       security_groups: Admin-SG
+       nics: "port-name=a1981bd0-3d02-4a45-8a55-15d48fb5b70f,port-name=101eac42-9ca3-47b8-8bdb-7b0c560f49e6"
+       config_drive: yes
+       user_data: |
+        # infoblox-config
+         remote_console_enabled: y
+         temp_license: vnios dns dhcp enterprise
+         default_admin_password: infoblox
+         lan1:
+           v4_addr: 192.168.2.30
+           v4_netmask: 255.255.255.0
+           v4_gw: 192.168.2.1
+  - os_floating_ip:
+         state: present
+         reuse: yes
+         server: Grid_Master
+         network: External
+         nat_destination: Lan-1
+         fixed_address: 192.0.2.30
+         wait: true
+         timeout: 180
+  
+  - name: Deploy Member-1
+    os_server:
+      name: Member-1
+      state: present
+      image: 637b3a0e-727f-48fc-95b6-23e2736609d6
+      timeout: 200
+      flavor: 92aff88f-839f-479b-9156-4be2a3c3594b
+      security_groups: Admin-SG
+      nics: "port-name=84da4e8c-3af9-41b3-bfc0-927095e420cd,port-name=0f12f865-9c56-4cc0-9f85-83047e240163"
+      config_drive: yes
+      user_data: |
+        # infoblox-config
+         remote_console_enabled: y
+         temp_license: vnios dns dhcp enterprise
+         default_admin_password: infoblox
+         lan1:
+           v4_addr: 192.168.2.7
+           v4_netmask: 255.255.255.0
+           v4_gw: 192.168.2.1
+  - os_floating_ip:
+         state: present
+         reuse: yes
+         server: Grid_Master
+         network: External
+         nat_destination: Lan-1
+         fixed_address: 192.0.2.7
+         wait: true
+         timeout: 180
+- import_playbook: wait_for_grid_master.yml
+- import_playbook: pre_provision_member.yml
+- import_playbook: join_member.yml
+
+...

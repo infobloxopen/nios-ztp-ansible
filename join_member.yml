@@ -1,0 +1,24 @@
+
+---
+- name: Join Member to the Grid_Master
+  hosts: localhost
+  tasks:
+  - os_server_facts:
+      server: Member-1
+  - name: Joining a member to the Grid
+    uri:
+      url: "https://{{ openstack_servers[0].interface_ip }}/wapi/v2.7/grid?_function=join&_return_as_object=1"
+      method: POST
+      user: admin
+      password: infoblox
+      status_code: 201, 200, 302
+      method: POST
+      header:
+        Content-Type: "application/json"
+      body: "{{ lookup('file','auth1.json') }}"
+      body_format: json
+      validate_certs: no
+      return_content: yes
+    register: restdata
+
+...

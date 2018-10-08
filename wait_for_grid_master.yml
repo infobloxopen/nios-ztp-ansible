@@ -1,0 +1,15 @@
+---
+
+- name: Waiting for the Grid_Master to come online
+  hosts: localhost
+  tasks:
+  - os_server_facts:
+       server: Grid_Master
+  - name: Checking http status
+    command: curl --head --insecure "https://{{ openstack_servers[0].interface_ip }}"
+    register: result
+    until: result.stdout.find("302 Found")!= -1
+    retries: 20
+    delay: 10
+    changed_when: false
+...

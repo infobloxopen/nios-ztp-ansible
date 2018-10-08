@@ -1,0 +1,23 @@
+---
+
+- name: Pre-provisioning a member in the Grid_master
+  hosts: localhost
+  tasks:
+  - os_server_facts:
+      server: Grid_Master
+  - name: Pre-provisioning a member in the Grid_Master
+    uri:
+      url: "https://{{ openstack_servers[0].interface_ip }}/wapi/v2.7/member?_return_as_object=1"
+      user: admin
+      password: infoblox
+      status_code: 201, 200, 302
+      method: POST
+      header:
+        Content-Type: "application/json"
+      body: "{{ lookup('file','auth.json') }}"
+      body_format: json
+      validate_certs: no
+      return_content: yes
+    register: restdata
+
+...

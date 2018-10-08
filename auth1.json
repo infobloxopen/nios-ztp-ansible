@@ -1,0 +1,5 @@
+{  
+   "grid_name":"Infoblox",
+   "shared_secret":"test",
+   "master":"192.168.2.30"
+}
