@@ -9,7 +9,7 @@ if [ "${REQUIRE_PASSWORD}" == "requires authentication." ]
 		echo -e " \033[0;31m Incorrect Password entered for admin-openrc file, Please try again \033[0;31m "
 elif
             !  [ "${REQUIRE_PASSWORD}" == "requires authentication" ] 
-	then 
+	then    echo "**Images**" > openstack_values
 		openstack image list >> openstack_values
                 echo "**Networks**" >> openstack_values
                 openstack network list >> openstack_values
