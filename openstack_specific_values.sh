@@ -1,5 +1,4 @@
 #!/bin/bash
-source /root/admin-openrc.sh
 openstack image list 2> test_output.txt
 REQUIRE_PASSWORD="$(less test_output.txt|grep "requires authentication"| cut -d " " -f6-7)"
 
