@@ -10,9 +10,9 @@ ansible-playbook $PLAY_BOOK
 if [ "${EXIT_STATUS}" -eq 0 ]
 
 	then 
-		sleep 5
+		sleep 50
 			echo "Starting DNS and DHCP services"
-				sleep 5
+				sleep 120
 
 DHCP_REF_VALUE_FOR_GRID_MASTER="$(curl -s -k -u admin:infoblox -H 'content-type: application/json' -X GET "https://"$1"/wapi/v2.7/member:dhcpproperties?_return_fields=enable_dhcp"|grep member | awk '{print $NF}' | cut -d'"' -f2  |head -1)"
 DHCP_REF_VALUE_FOR_MEMBER1="$(curl -s -k -u admin:infoblox -H 'content-type: application/json' -X GET "https://"$1"/wapi/v2.7/member:dhcpproperties?_return_fields=enable_dhcp"|grep member | awk '{print $NF}' | cut -d'"' -f2  |tail -1)"
