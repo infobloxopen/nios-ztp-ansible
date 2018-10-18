@@ -13,3 +13,6 @@ The Ansible playbook discussed in the document addresses the following use cases
 •	A working OpenStack (Newton release onwards) setup with sufficient resources to host Infoblox grid (a minimum of 24 GB RAM, 8 vCPUs and 600 GB hard disk space).
 •	The vNIOS image for KVM (version specific or DDI) in the qcow2 format. 
 •	A Linux machine (preferably ubuntu) with Ansible (2.6.2 onwards) and python-openstack client (3.16.x) installed.
+
+
+###################
