@@ -8,7 +8,7 @@ The Ansible playbook discussed in the document addresses the following use cases
 •	Starting DNS and DHCP services using a shell script. ( zero_touch_provisioning.sh )
 
 
-Pre-requistes
+#####Pre-requistes#####
 
 •	A working OpenStack (Newton release onwards) setup with sufficient resources to host Infoblox grid (a minimum of 24 GB RAM, 8 vCPUs and 600 GB hard disk space).
 •	The vNIOS image for KVM (version specific or DDI) in the qcow2 format. 
