@@ -16,3 +16,5 @@ The Ansible playbook discussed in the document addresses the following use cases
 
 
 ###################
+
+For a detailed step by step procedure to use the playbooks please refer --> https://www.infoblox.com/resources/deployment-guides/zero-touch-provisioning-nios-openstack-using-ansible
