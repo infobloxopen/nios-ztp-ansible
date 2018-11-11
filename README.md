@@ -1,7 +1,7 @@
 # nios-ztp-anisble
 Deploying Infoblox Grid( Grid Master and a Member) and doing initial configurations through Ansible on OpenStack 
 
-The Ansible playbook discussed in the document addresses the following use cases:
+The Ansible playbook discussed in the document addresses these use cases:
 •	Deploying Grid Master( Deployment, License and network initialization using cloud-init)
 •	Deploying a Member( Deployment, License and network initialization using cloud-init)	
 •	Adding the Member to the Grid.
