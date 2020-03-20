@@ -1,4 +1,4 @@
-# nios-ztp-anisble
+# nios-ztp-ansible
 Deploying Infoblox Grid( Grid Master and a Member) and doing initial configurations through Ansible on OpenStack 
 
 The Ansible playbooks discussed in the document addresses these use cases:
